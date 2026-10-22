@@ -1,0 +1,30 @@
+### Footprint positions - created on 2026-01-14T15:49:36+0800 ###
+### Printed by KiCad version 8.0.7
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val              Package                                                           PosX       PosY       Rot  Side
+C33       100n             C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                    75.6220  -173.1283  -90.0000  bottom
+C39       30p              C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                   113.5958  -156.2453  -90.0000  bottom
+C40       30p              C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                   107.2458  -156.2453   90.0000  bottom
+C41       100p             C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                    84.4550  -153.4433  180.0000  bottom
+C43       1000p/2KV        C_1206_3216Metric_Pad1.33x1.80mm_HandSolder                    85.2740  -170.3343    0.0000  bottom
+C44       10n              C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                    96.7232  -154.3069  180.0000  bottom
+C45       10n              C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                    96.3422  -169.5469  180.0000  bottom
+C46       100n             C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                   108.5158  -149.8283    0.0000  bottom
+C48       100n             C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                   116.0158  -141.2916   90.0000  bottom
+C49       10p              C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                   120.7148  -141.8313  -90.0000  bottom
+C50       100n             C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                   116.9048  -153.4179   90.0000  bottom
+C51       100n             C_0603_1608Metric_Pad1.08x0.95mm_HandSolder                   115.2538  -153.4179   90.0000  bottom
+R23       1M               R_0603_1608Metric_Pad0.98x0.95mm_HandSolder                   112.6598  -151.6103  180.0000  bottom
+R26       0                R_0603_1608Metric_Pad0.98x0.95mm_HandSolder                    84.4550  -155.0943  180.0000  bottom
+R27       510              R_0603_1608Metric_Pad0.98x0.95mm_HandSolder                    79.0510  -153.9513  -90.0000  bottom
+R28       510              R_0603_1608Metric_Pad0.98x0.95mm_HandSolder                    84.5120  -167.7943  180.0000  bottom
+R34       2K49/1%          R_0603_1608Metric_Pad0.98x0.95mm_HandSolder                   108.5158  -151.4793    0.0000  bottom
+R35       4K7              R_0603_1608Metric_Pad0.98x0.95mm_HandSolder                   109.3578  -143.3553  180.0000  bottom
+R36       4K7              R_0603_1608Metric_Pad0.98x0.95mm_HandSolder                   114.3108  -141.2916   90.0000  bottom
+R40       0                R_0603_1608Metric_Pad0.98x0.95mm_HandSolder                   119.0638  -141.8313   90.0000  bottom
+R43       4K7              R_0603_1608Metric_Pad0.98x0.95mm_HandSolder                   118.5558  -153.4179  -90.0000  bottom
+U5        TS8121CLF        SOP-16_7.0x13.0mm_P1.27mm                                      94.5642  -161.7999  -90.0000  bottom
+U6        RTL8201FI-VC-CG  QFN-32-1EP_5x5mm_P0.5mm_EP3.3x3.3mm_ThermalVias               115.2548  -147.2203    0.0000  bottom
+Y3        25MHz            Crystal_SMD_SeikoEpson_TSX3225-4Pin_3.2x2.5mm_HandSoldering   110.4208  -156.2453  -90.0000  bottom
+## End
