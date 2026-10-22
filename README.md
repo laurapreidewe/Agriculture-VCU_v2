@@ -4,7 +4,7 @@ Vehicle control unit PCB for agricultural robots and machinery, built around the
 
 The project was originally designed in **KiCad 8** and has been updated to **KiCad 10**. The current schematic and PCB files identify KiCad 10.0 as their generator.
 
-**Hardware status:** V2 is conditionally functioning and requires relay rework. Test Report Rev. A also identifies mechanical issues that make this revision unsuitable for field applications in its current condition. See [validation and known issues](#validation-and-known-issues) before assembling or using a board.
+**Known issue:** the relay circuit requires rework because pins **3 and 4** are swapped in the optocoupler footprint. Refer to the [PCB Test Report Rev. A](docs/references/pcb-test-report-rev-a.pdf) for rework details.
 
 ## Board overview
 
@@ -30,7 +30,7 @@ The photograph shows the assembled board with relay rework wiring.
 | PCB | Four layers, 176.53 × 184.15 mm, 2 mm thick |
 | Fabrication limits | 0.1 mm minimum track width/spacing and 0.2 mm minimum hole diameter |
 
-Connector pinouts, switches, LEDs, and test points are listed in the [user manual](docs/references/user-manual.pdf). Relay contact wiring must also account for the pin-order issue below.
+Connector pinouts, switches, LEDs, and test points are listed in the [user manual](docs/references/user-manual.pdf).
 
 ## Project files and KiCad setup
 
@@ -71,58 +71,13 @@ The [Version Control Report](docs/references/version-control-report.pdf) documen
 | Storage and USB | No external flash; USB shield directly grounded | Added SPI flash; USB shield connected through a ferrite bead |
 | Layout | 180 × 180 mm; components on the top layer | 176.53 × 184.15 mm; some Ethernet components on the bottom layer, edge connectors, and teardrops at small vias |
 
-## Validation and known issues
-
-The following results summarize the supplied [PCB Test Report Rev. A](docs/references/pcb-test-report-rev-a.pdf), revised **22 June 2026**. They describe laboratory testing of the evaluated board; the interfaces were tested independently with separate firmware.
-
-| Function | Reported result |
-| --- | --- |
-| Power | Measured 12 V, 5.03 V, and 3.33 V. The 12 V and 5 V rails were supplied independently because buck-module stock was limited. |
-| SWD and MCU | MCU detection and APROM programming succeeded with the NuMicro ICP Programming Tool. |
-| GPIO | Selected GPIO outputs successfully toggled an external LED. |
-| Relays | Functioned after correcting optocoupler wiring and changing the low-voltage-side pull-up to 5 V. |
-| PWM | Both outputs worked. The report records slower rising edges after the level shifter: approximately 700 ns with a 10 kΩ pull-up and 440 ns with 1 kΩ. |
-| ADC | Both channels covered 0–4095 counts over the tested 0–5 V connector input range. |
-| DAC | Both channels produced the expected sine waves with a 180° relative phase shift; a small DAC1 spike was observed. |
-| UART | UART0 transmission worked. UART2 did not produce the expected result and requires further firmware/setup verification. |
-| CAN | Bidirectional CAN0/CAN1 communication passed on one board using two MCP2551 transceivers. |
-| Ethernet | Rev. A shows four successful ping replies with 0% packet loss. PHY supply measurements and QFN exposed-pad soldering are discussed in Section 5.8. |
-
-### Relay rework
-
-- **Optocoupler footprint:** pins **3 and 4 are swapped**. Existing boards need rework on the optocoupler output side to restore the intended connections. Rev. A, Section 5.2, shows the corrected pin arrangement.
-- **Pull-up voltage:** the reported working configuration uses **5 V** on the low-voltage side. The report records no switching at 3.3 V and an always-on relay at 12 V.
-- **Contact order:** the Version Control Report and August evaluation identify the existing left-to-right terminal order as **NC–COM–NO**, while the intended order is **NO–COM–NC**. Verify the actual contacts before wiring loads.
-
-**Source discrepancy:** the supplied Testing Protocol's relay rework section specifies a 12 V pull-up. This conflicts with the measured results in Test Report Rev. A and the 5 V recommendation in the August evaluation. Use the Rev. A findings and corrected pin arrangement when reviewing the rework; the protocol's 12 V instruction should not be used as the working configuration.
-
-### Power and mechanical follow-up
-
-The report records initial 3.3 V rail instability and stabilization after removing regulator output capacitor C3 during troubleshooting. This observation is part of the laboratory test history; regulator stability still needs the proof-of-concept work identified in the evaluation. The report also calls for better buck-module cable clearance and easier component assembly before field use.
-
-For assembly, power checks, SWD setup, and individual interface test procedures, refer to the [Testing Protocol](docs/references/testing-protocol.pdf), with the relay discrepancy above taken into account. Test firmware was based on the [Nuvoton M460 BSP examples](https://github.com/OpenNuvoton/m460bsp/tree/master/SampleCode/StdDriver).
-
-## V2 evaluation and considerations for V3
-
-| Evaluation area | Follow-up proposed in the presentation |
-| --- | --- |
-| Power | Retain TPS79533, validate the supply in simulation and hardware, and investigate replacing the buck module with a buck IC such as TPS62933. The optional test board moves reverse-voltage protection to the 12 V rail and adds removable current-measurement links. |
-| Copper pours | Use thermal reliefs where appropriate to improve soldering of ground pads. |
-| Relays | Correct optocoupler pins 3/4, the NO/NC contact order, and the 5 V pull-up arrangement. |
-| USB | Address the missing FSUSB_VBUS connection to PA.12 for device VBUS detection. If host/OTG support is added, provide controlled, protected VBUS switching. |
-| Test points and GPIO expansion | Add test points before and after PWM/DAC interface stages; review RMII routing through expansion-header pads and the resulting routing distance/stubs. |
-| CAN and SD card | Evaluate embedding the CAN interface and restoring SD-card support to reduce reliance on external modules. |
-| Ethernet and assembly | Review compatible magnetics and top-layer PHY/transformer placement to simplify assembly. |
-
-The August USB evaluation identifies VBUS sensing as necessary even for device operation, revisiting the Version Control Report's earlier rationale for omitting it. USB functionality is not reported as validated in Test Report Rev. A.
-
 ## Reference documents
 
 | Source | Purpose |
 | --- | --- |
 | [Presentation1.pptx](docs/references/Presentation1.pptx) | Original annotated board overview, rendered above as a PNG |
 | [Agricultural VCU V2 User Manual](docs/references/user-manual.pdf) | Pin assignments, connectors, switches, LEDs, test points, and schematics |
-| [Agricultural VCU V2 Testing Protocol](docs/references/testing-protocol.pdf) | Assembly and laboratory test procedures; see the relay discrepancy above |
-| [Agricultural VCU v2 PCB Test Report Rev. A](docs/references/pcb-test-report-rev-a.pdf) | Measurements, interface results, rework findings, and remaining issues |
+| [Agricultural VCU V2 Testing Protocol](docs/references/testing-protocol.pdf) | Assembly and laboratory test procedures |
+| [Agricultural VCU v2 PCB Test Report Rev. A](docs/references/pcb-test-report-rev-a.pdf) | PCB test record and relay rework details |
 | [Agricultural VCU V2 Version Control Report](docs/references/version-control-report.pdf) | Changes from hardware V1 to V2 |
-| [20260810_Rai.pptx](docs/references/20260810_Rai.pptx) | V2 evaluation list and V3 considerations from the August lab meeting |
+| [20260810_Rai.pptx](docs/references/20260810_Rai.pptx) | V2 evaluation list; original location: `season 2/projects/presentation/20260810_Rai.pptx` |
