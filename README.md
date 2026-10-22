@@ -10,7 +10,7 @@ The project was originally designed in **KiCad 8** and has been updated to **KiC
 
 ![Annotated Agricultural VCU V2 board showing the power input, buck module, regulator, DAC, ADC, CAN, PWM, UART, MCU, reset button, USB, relays, and Ethernet](docs/images/vcu-v2-board-overview.png)
 
-The photograph shows the assembled board without relay rework wiring.
+The photograph shows the assembled board with relay rework wiring.
 
 ## Hardware
 
