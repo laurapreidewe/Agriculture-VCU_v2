@@ -62,7 +62,7 @@ The [Version Control Report](docs/references/version-control-report.pdf) documen
 | Clocks | 8.192 MHz external crystal; external RTC clock unused | 12 MHz external crystal and external RTC clock |
 | Power input | Four-pin connector for 12 V, 72 V, and grounds | Two-pin 12 V/GND connector; added TVS protection |
 | MCU supply | VCAP routing mistake required a manual trace cut | LDO_CAP pins kept separate from the 3.3 V rail |
-| Decoupling | 0402 capacitors | 0603 capacitors to ease assembly |
+| Decoupling | 0402 capacitors | 0603 capacitors |
 | GPIO expansion | One 2×13 and three 2×12 sockets, with 3.3 V and 5 V power pins | Four 2×20 sockets, with 3.3 V power pins |
 | Debug | STM32 SWD and boot-jumper circuitry | M467 SWD on PF.0/PF.1 with external pull-ups; simplified boot circuitry |
 | Ethernet | Unused | Added PHY, magnetics, and RJ45 interface |
