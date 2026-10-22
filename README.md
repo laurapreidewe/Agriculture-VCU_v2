@@ -104,8 +104,6 @@ For assembly, power checks, SWD setup, and individual interface test procedures,
 
 ## V2 evaluation and considerations for V3
 
-[20260810_Rai.pptx](docs/references/20260810_Rai.pptx), **“V2 Evaluations for V3”**, was presented by Angelique Raihany Hadiva on **10 August 2026**. Its original location was identified as `season 2/projects/presentation/20260810_Rai.pptx`; a copy is included here for reference. It evaluates this V2 board and lists proposed changes for V3. These proposals are not completed V2 changes.
-
 | Evaluation area | Follow-up proposed in the presentation |
 | --- | --- |
 | Power | Retain TPS79533, validate the supply in simulation and hardware, and investigate replacing the buck module with a buck IC such as TPS62933. The optional test board moves reverse-voltage protection to the 12 V rail and adds removable current-measurement links. |
